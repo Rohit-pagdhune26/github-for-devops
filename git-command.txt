@@ -1,0 +1,284 @@
+1. Git Configuration Commands
+
+These commands configure your Git username and email.
+
+No.	Command	Short Use
+1	git --version	Check the installed Git version.
+2	git config --global user.name "Rohit"	Set your Git username.
+3	git config --global user.email "your@email.com"	Set your Git email.
+4	git config --list	Display Git configuration settings.
+5	git config user.name	Check your configured username.
+6	git config user.email	Check your configured email.
+7	git config --global --unset user.name	Remove your global username setting.
+8	git config --global --unset user.email	Remove your global email setting.
+2. Git Repository Commands
+
+These commands help you create and manage a Git repository.
+
+No.	Command	Short Use
+9	git init	Initialize a new Git repository.
+10	git clone <repository-url>	Copy a remote repository to your computer.
+11	git status	Check the current repository status.
+12	git rev-parse --show-toplevel	Display the repository's root directory.
+13	git rev-parse --is-inside-work-tree	Check whether you are inside a Git working tree.
+14	git ls-files	List files tracked by Git.
+15	git ls-files --others --exclude-standard	List untracked, non-ignored files.
+
+Example:
+
+mkdir myproject
+cd myproject
+git init
+git status
+
+Use: Create a project directory, initialize Git, and check the repository status.
+
+3. Git Add and Commit Commands
+
+These commands save changes in Git's local history.
+
+No.	Command	Short Use
+16	git add filename	Stage a specific file.
+17	git add .	Stage changes in the current directory and its subdirectories.
+18	git add -A	Stage all changes across the working tree.
+19	git add *.txt	Stage matching text files in the current directory.
+20	git commit -m "message"	Save staged changes as a commit.
+21	git commit	Create a commit using the configured editor.
+22	git commit -a -m "message"	Commit modifications and deletions of tracked files.
+23	git commit --amend -m "new message"	Replace the latest commit message and amend the commit.
+24	git diff	Show unstaged changes.
+25	git diff --staged	Show staged changes.
+26	git diff HEAD	Show all tracked changes compared with the latest commit.
+
+Example:
+
+git add .
+git commit -m "Add website files"
+
+Use: Stage your project files and save them in Git history.
+
+Remember:
+
+git add = Prepare changes.
+git commit = Save changes in local Git history.
+git push = Upload commits to a remote repository.
+4. Git Log and History Commands
+
+These commands help you inspect previous commits.
+
+No.	Command	Short Use
+27	git log	Display commit history.
+28	git log --oneline	Display compact commit history.
+29	git log --oneline --all	Show compact history for all visible branches.
+30	git log -5	Display the latest five commits.
+31	git log --graph --oneline --all	Display commit history as a graph.
+32	git show	Display details of the latest commit.
+33	git show <commit-id>	Display details of a specific commit.
+34	git blame filename	Show who last changed each line of a file.
+35	git reflog	Show recent movements of HEAD and local references.
+5. Git Branch Commands
+
+A branch lets you develop a feature separately from another branch.
+
+No.	Command	Short Use
+36	git branch	List local branches.
+37	git branch -a	List local and remote-tracking branches.
+38	git branch -r	List remote-tracking branches.
+39	git branch new-branch	Create a new branch.
+40	git switch new-branch	Switch to an existing branch.
+41	git switch -c new-branch	Create and switch to a new branch.
+42	git checkout new-branch	Switch to a branch using the older command.
+43	git checkout -b new-branch	Create and switch to a branch using the older command.
+44	git branch -m old-name new-name	Rename a branch.
+45	git branch -d branch-name	Delete a safely mergeable local branch.
+46	git branch -D branch-name	Force-delete a local branch.
+47	git merge branch-name	Merge the specified branch into the current branch.
+48	git merge --abort	Abort an in-progress merge when possible.
+
+Example:
+
+git branch feature
+git switch feature
+
+Use: Create a branch named feature and switch to it.
+
+6. GitHub Remote Repository Commands
+
+These commands connect your local Git repository to GitHub.
+
+No.	Command	Short Use
+49	git remote -v	Display configured remote repository URLs.
+50	git remote add origin <repository-url>	Add a remote named origin.
+51	git remote get-url origin	Display the URL of origin.
+52	git remote set-url origin <new-url>	Change the remote URL.
+53	git remote remove origin	Remove the remote configuration named origin.
+54	git fetch	Download remote updates without integrating them into your current branch.
+55	git fetch origin	Fetch updates from the remote named origin.
+56	git pull	Fetch and integrate updates from the configured upstream.
+57	git pull origin main	Fetch and integrate changes from the remote main branch.
+58	git push	Push commits to the configured upstream branch.
+59	git push -u origin main	Push main and set its upstream branch.
+60	git push origin main	Push local main to remote main.
+61	git push origin --delete branch-name	Delete a branch on the remote.
+62	git ls-remote origin	List references available on the remote.
+
+Example: Connect your project to GitHub
+
+git remote add origin https://github.com/USERNAME/REPOSITORY.git
+git branch -M main
+git push -u origin main
+
+Use: Connect the local repository to GitHub and upload the main branch.
+
+Replace USERNAME and REPOSITORY with your actual GitHub username and repository name.
+
+7. Git Pull Request and Collaboration Commands
+
+GitHub Pull Requests are created on the GitHub website or through the GitHub CLI (gh), not through a standard Git command.
+
+No.	Command	Short Use
+63	git fetch origin	Download the latest remote references.
+64	git branch -r	Check remote-tracking branches.
+65	git switch -c feature origin/feature	Create a local branch tracking the remote feature branch.
+66	git pull --rebase	Integrate upstream changes by rebasing local commits.
+67	git push origin feature	Push the feature branch to GitHub.
+68	git cherry-pick <commit-id>	Apply a specific commit to the current branch.
+69	git rebase main	Replay current-branch commits on top of main.
+70	git rebase --abort	Abort an in-progress rebase.
+71	git rebase --continue	Continue a rebase after resolving conflicts.
+
+GitHub CLI commands
+
+Install and authenticate the GitHub CLI (gh) before using these commands.
+
+No.	Command	Short Use
+72	gh auth login	Authenticate with GitHub.
+73	gh repo create	Create a GitHub repository.
+74	gh repo clone OWNER/REPO	Clone a GitHub repository.
+75	gh pr create	Create a Pull Request.
+76	gh pr list	List Pull Requests.
+77	gh pr view	View Pull Request details.
+78	gh pr checkout 123	Check out Pull Request number 123 locally.
+79	gh pr merge 123	Merge Pull Request number 123, subject to repository rules and permissions.
+80	gh issue list	List GitHub issues.
+81	gh issue create	Create a GitHub issue.
+82	gh repo view	View repository information.
+8. Git Undo and Reset Commands
+
+These commands help you undo changes. Use caution: some commands can permanently discard work.
+
+No.	Command	Short Use
+83	git restore filename	Discard unstaged changes in a file.
+84	git restore .	Discard unstaged changes in tracked files in the current directory.
+85	git restore --staged filename	Unstage a file without discarding its changes.
+86	git reset --soft HEAD~1	Undo the latest commit while keeping changes staged.
+87	git reset --mixed HEAD~1	Undo the latest commit while keeping changes in the working tree unstaged.
+88	git reset --hard HEAD~1	Move HEAD back one commit and discard affected tracked changes.
+89	git revert <commit-id>	Create a new commit that reverses a specified commit.
+90	git clean -n	Preview untracked files that would be removed.
+91	git clean -f	Remove untracked files.
+92	git clean -fd	Remove untracked files and directories.
+
+Important difference:
+
+git reset changes the current branch's history.
+git revert creates a new commit to reverse an earlier commit.
+git restore restores file contents or staging state.
+git clean removes untracked files.
+
+Do not use git reset --hard or git clean -fd unless you are certain you do not need the affected work.
+
+9. Git Stash Commands
+
+Stash temporarily stores changes so you can work on something else.
+
+No.	Command	Short Use
+93	git stash	Stash tracked working-tree and staged changes.
+94	git stash push -m "message"	Stash changes with a description.
+95	git stash list	List saved stashes.
+96	git stash show	Show a summary of a stash.
+97	git stash show -p	Show the changes stored in a stash.
+98	git stash apply	Apply the latest stash and keep it saved.
+99	git stash pop	Apply the latest stash and remove it if successfully applied.
+100	git stash drop	Remove the latest stash.
+101	git stash clear	Remove all stashes.
+
+Example:
+
+git stash
+git switch main
+git stash pop
+
+Use: Temporarily save changes, switch to main, and then reapply the saved changes.
+
+10. Git Tags Commands
+
+Tags mark important commits, such as software releases.
+
+No.	Command	Short Use
+102	git tag	List local tags.
+103	git tag v1.0	Create a lightweight tag.
+104	git tag -a v1.0 -m "Version 1.0"	Create an annotated tag.
+105	git show v1.0	Display tag and commit details.
+106	git push origin v1.0	Push a specific tag to the remote.
+107	git push origin --tags	Push all local tags to the remote.
+108	git tag -d v1.0	Delete a local tag.
+109	git push origin --delete v1.0	Delete a remote tag.
+11. Git .gitignore Commands
+
+A .gitignore file specifies untracked files that Git should ignore.
+
+There is no dedicated git ignore command built into Git. You create and edit the .gitignore file yourself.
+
+Create a .gitignore file in Linux:
+
+touch .gitignore
+
+Example .gitignore contents:
+
+node_modules/
+.env
+*.log
+.terraform/
+terraform.tfstate
+No.	Command or Entry	Short Use
+110	touch .gitignore	Create a .gitignore file on Linux.
+111	git status --ignored	Show ignored files as well as ordinary status information.
+112	git check-ignore filename	Check whether a file is ignored.
+113	node_modules/	Ignore a directory named node_modules.
+114	.env	Ignore a file named .env in matching locations.
+115	*.log	Ignore files ending in .log.
+
+Important: Adding an already tracked file to .gitignore does not stop Git from tracking it. For example, to stop tracking .env while retaining the local file, use:
+
+git rm --cached .env
+git commit -m "Stop tracking env file"
+
+Never upload passwords, API keys, AWS credentials, or other secrets to GitHub.
+
+12. Git Conflict and Troubleshooting Commands
+No.	Command	Short Use
+116	git status	Identify changed files and unresolved conflicts.
+117	git diff	Inspect unstaged differences.
+118	git diff --check	Check for whitespace errors.
+119	git diff --name-only --diff-filter=U	List unresolved conflicted files.
+120	git merge --abort	Abort an in-progress merge.
+121	git rebase --abort	Abort an in-progress rebase.
+122	git log --oneline --all --graph	Inspect commit history and branches.
+123	git fsck --full	Check repository object integrity.
+124	git count-objects -v	Show repository object storage statistics.
+125	git gc	Perform repository housekeeping.
+13. Git Advanced Commands
+No.	Command	Short Use
+126	git cherry-pick <commit-id>	Apply a specific commit.
+127	git bisect start	Start a binary search to find a problematic commit.
+128	git bisect good <commit-id>	Mark a commit as good during bisect.
+129	git bisect bad <commit-id>	Mark a commit as bad during bisect.
+130	git bisect reset	End bisect and return to the original branch.
+131	git worktree list	List working trees associated with a repository.
+132	git worktree add ../feature feature	Create a working tree for an existing branch.
+133	git archive --format=zip HEAD -o project.zip	Create a ZIP archive of the committed project.
+134	git grep "text"	Search tracked files for text.
+135	git shortlog -sn	Summarize commit counts by author.
+136	git diff main..feature	Compare changes between two branch tips.
+137	git log main..feature --oneline	Show commits reachable from feature but not from main.
